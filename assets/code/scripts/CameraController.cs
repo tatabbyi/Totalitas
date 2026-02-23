@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour
     [Header("Target to Follow")]
     public Transform target; //player
     [Header("Camera Settings")]
-    public float smoothSpeed = 0.125f; //camera moves to desired position speed
+    public float smoothTime = 0.125f; //camera moves to desired position speed
     public Vector3 offset = new Vector3(-10f, 10f, -10f); //place camera diagonally above and behind 
     [Header("Rotate Camera")]
 
@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
         if (lockRotation){
             transform.rotation = Quaternion.Euler(fixedEulerAngles); //set rotation for each frame
         }else{
-           transform.lookAt(target);//alternative camera will always look at the player
+           transform.LookAt(target);//alternative camera will always look at the player
             
         }
     }
