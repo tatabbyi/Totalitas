@@ -86,9 +86,9 @@ public class Dialogue1 : MonoBehaviour
                 return true;
             }
         }
-#endif
-
-        // Legacy Input system fallback
+        return false;
+#else
+        // Legacy Input system fallback (only if Input System not enabled)
         foreach (var key in advanceKeys)
         {
             if (Input.GetKeyDown(key))
@@ -96,8 +96,8 @@ public class Dialogue1 : MonoBehaviour
                 return true;
             }
         }
-
         return false;
+#endif
     }
 
     void StartDialogue()
@@ -157,6 +157,3 @@ public class Dialogue1 : MonoBehaviour
     }
 
 }
-
-
-
