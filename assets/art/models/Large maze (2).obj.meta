@@ -3,7 +3,12 @@ guid: c5ab777cca6b0cc4ea307f6eb925702f
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ZBrushPolyMesh3DMat
+    second: {fileID: 2100000, guid: f058f7578d891514fbff4df26e3a568c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
