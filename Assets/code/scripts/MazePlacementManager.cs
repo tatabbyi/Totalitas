@@ -1,9 +1,11 @@
 using UnityEngine;
+using Unity.AI.Navigation;
 
 public class MazePlacementManager : MonoBehaviour
 {
     [SerializeField] private Transform placementAnchor;
     [SerializeField] private MazePreset[] availablePresets;
+    [SerializeField] private NavMeshSurface navMeshSurface; 
 
     private GameObject _currentMazeInstance;
     private bool _placementLocked;
@@ -23,6 +25,10 @@ public class MazePlacementManager : MonoBehaviour
             placementAnchor.position,
             placementAnchor.rotation
         );
+
+        if (navMeshSurface != null)
+            navMeshSurface.BuildNavMesh();
+
         return true;
     }
 
