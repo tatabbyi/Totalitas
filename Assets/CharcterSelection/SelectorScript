@@ -1,14 +1,48 @@
-<<<<<<< HEAD
+using System.Numerics;
+using System.Threading.Tasks.Dataflow;
 using UnityEngine;
 
 public class SelectorScript : MonoBehaviour
 {
-    
-=======
-using UnityEngine;
+    public GameObject[] characterModels; //Prefabs with the idle animations
+    public TransformBlock spawnPoint; //Where the preview appears
 
-public class SelectorScript : MonoBehaviour
-{
-    
->>>>>>> origin/main
+    private int index = 0;
+    private GameObject currentModel;
+
+    void Start()
+    {
+        ShowCharacter(index);
+    }
+
+    public void NextCharacter()
+    {
+        index++;
+        if (index >= characterModels.Length)
+            index = 0;
+        ShowCharacter(index);    
+    }
+    public void PreviousCharacter()
+    {
+        index --;
+        if (index < 0)
+            index = characterModels.Length -1;
+
+        ShowCharacter(index);
+
+    }
+    void ShowCharacter(IAsyncDisposable i)
+    {
+        //Removing the old preview
+        if(currentModel !=null)
+            Destroy(currentModel);
+
+            //New preview
+            currentModel = Instantiate(characterModels[i],spawnPoint);
+            
+            //Resetting position/rotation
+            currentModel.transform.localPosition = Vector3.Zero;
+            currentModel.transform.localRotation = Quaternion.Identity;
+            
+    }
 }
