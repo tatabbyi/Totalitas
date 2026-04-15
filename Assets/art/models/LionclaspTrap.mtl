@@ -1,0 +1,11 @@
+newmtl metal_dark
+Ka 0.15 0.15 0.15
+Kd 0.32 0.32 0.35
+Ks 0.20 0.20 0.20
+Ns 20.0
+
+newmtl metal_light
+Ka 0.20 0.20 0.20
+Kd 0.62 0.62 0.66
+Ks 0.30 0.30 0.30
+Ns 35.0

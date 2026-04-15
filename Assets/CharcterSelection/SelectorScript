@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 using UnityEngine;
 
 public class SelectorScript : MonoBehaviour
 {
     
+=======
+using UnityEngine;
+
+public class SelectorScript : MonoBehaviour
+{
+    
+>>>>>>> origin/main
 }
