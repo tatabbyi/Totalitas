@@ -2405,9 +2405,6 @@ PrefabInstance:
       addedObject: {fileID: 765842376}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 765842375}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 765842374}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       insertIndex: -1
@@ -2496,19 +2493,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &765842375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765842371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d468963ec0bea8699bf0dd61fd99be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyNavigator
-  villageTarget: {fileID: 0}
 --- !u!114 &765842376
 MonoBehaviour:
   m_ObjectHideFlags: 0

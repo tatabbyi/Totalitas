@@ -2,6 +2,6 @@
     <Style src="project://database/Assets/UI%20Toolkit/UnityThemes/MainMenuLabel.uss?fileID=7433441132597879392&amp;guid=03e82f6a543915f408223518407a691e&amp;type=3#MainMenuLabel"/>
     <ui:VisualElement name="Container" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/MainBackground.png?fileID=2800000&amp;guid=f6877eed680c21947944a2325c69a65e&amp;type=3#MainBackground&quot;);">
         <ui:Button text="Start&#10;" name="Start" class="button" style="margin-top: 200px; margin-right: 200px; margin-bottom: 200px; margin-left: 200px; -unity-text-align: middle-center; width: 140px; height: 34px; font-size: 25px;"/>
-        <ui:Button text="Settings&#10;" name="Settings" class="button" style="margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px; height: 37px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; text-overflow: ellipsis; width: 141px; position: absolute; top: 137px; left: 35px; -unity-text-align: middle-center; font-size: 25px;"/>
+        <ui:Button text="Settings&#10;" name="Settings" class="button" style="margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px; height: 39px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; text-overflow: ellipsis; width: 145px; position: absolute; top: 141px; left: 182px; -unity-text-align: middle-center; font-size: 25px;"/>
     </ui:VisualElement>
 </ui:UXML>
