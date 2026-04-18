@@ -1,7 +1,25 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/UnityThemes/MainMenuLabel.uss?fileID=7433441132597879392&amp;guid=03e82f6a543915f408223518407a691e&amp;type=3#MainMenuLabel"/>
-    <ui:VisualElement name="Container" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/MainBackground.png?fileID=2800000&amp;guid=f6877eed680c21947944a2325c69a65e&amp;type=3#MainBackground&quot;);">
-        <ui:Button text="Start&#10;" name="Start" class="button" style="margin-top: 200px; margin-right: 200px; margin-bottom: 200px; margin-left: 200px; -unity-text-align: middle-center; width: 140px; height: 34px; font-size: 25px;"/>
-        <ui:Button text="Settings&#10;" name="Settings" class="button" style="margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px; height: 39px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; text-overflow: ellipsis; width: 145px; position: absolute; top: 141px; left: 182px; -unity-text-align: middle-center; font-size: 25px;"/>
+    <ui:VisualElement name="Container" class="container" style="background-image: url(&quot;project://database/Assets/MainBackground.png?fileID=2800000&amp;guid=f6877eed680c21947944a2325c69a65e&amp;type=3#MainBackground&quot;);">
+        <ui:VisualElement name="MainMenu" class="menu-stack">
+            <ui:Button text="Start" name="startButton" class="button"/>
+            <ui:Button text="Settings" name="settingsButton" class="button"/>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="levelSelect" class="menu-stack hidden">
+            <ui:Button text="Level 1" name="level1Button" class="button"/>
+            <ui:Button text="Level 2 (Soon)" name="level2Button" class="button"/>
+            <ui:Button text="Back" name="backFromLevelSelect" class="button secondary-button"/>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="settingsPanel" class="menu-stack hidden">
+            <ui:Label text="Volume" class="slider-label" />
+            <ui:Slider name="volumeSlider" low-value="0" high-value="1" value="1" class="slider" />
+            <ui:Label text="Brightness" class="slider-label" />
+            <ui:Slider name="brightnessSlider" low-value="0.3" high-value="1" value="1" class="slider" />
+            <ui:Button text="Back" name="backFromSettings" class="button secondary-button"/>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="brightnessOverlay" class="brightness-overlay" picking-mode="Ignore" />
     </ui:VisualElement>
 </ui:UXML>

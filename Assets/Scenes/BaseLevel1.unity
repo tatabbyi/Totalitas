@@ -191,15 +191,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: da76de65bbcd506398881350c490559f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.80221
+      value: 35.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da76de65bbcd506398881350c490559f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.45022
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da76de65bbcd506398881350c490559f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.602236
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da76de65bbcd506398881350c490559f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -236,6 +236,20 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: da76de65bbcd506398881350c490559f, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: da76de65bbcd506398881350c490559f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7d0378f6379ed1348b9ed608e9ce2a28, type: 2}
+    - target: {fileID: 5866666021909216657, guid: da76de65bbcd506398881350c490559f, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+        'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
+        'mixamorig:LeftHandThumb3'\n\tTransform 'mixamorig:RightArm'\n\tTransform
+        'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform 'mixamorig:RightHandIndex3'\n\tand
+        more ...\n\tFrom animation clip 'mixamo.com'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -274,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814559b904b5c8d929755cd31ef4216b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 100
+  maxHealth: 75
 --- !u!54 &32227564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -282,10 +296,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32227561}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -321,7 +335,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -360,6 +374,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPoint: {fileID: 946777813}
+  placementManager: {fileID: 0}
+  endStopDistance: 1.2
+  wanderChance: 0.086
+  wanderRadius: 2
+  repathInterval: {x: 0.5, y: 1}
 --- !u!1001 &39500491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -750,7 +769,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -758,6 +776,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!114 &68974840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,14 +1554,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342679491}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 0.93911797, b: 0.8820755, a: 1}
   m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -1619,17 +1638,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 4
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &358844188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,31 +2375,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.9
+      value: 36.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.92372
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.3
+      value: -2.84
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8522219
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.5231806
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2382,7 +2407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -63.092
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2395,6 +2420,20 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7d0378f6379ed1348b9ed608e9ce2a28, type: 2}
+    - target: {fileID: 5866666021909216657, guid: b4b981a80c5a2f3afa4cf1fd45587e4c, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+        'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
+        'mixamorig:LeftHandThumb3'\n\tTransform 'mixamorig:RightArm'\n\tTransform
+        'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform 'mixamorig:RightHandIndex3'\n\tand
+        more ...\n\tFrom animation clip 'mixamo.com'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2440,7 +2479,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -2473,10 +2512,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765842371}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2505,7 +2544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814559b904b5c8d929755cd31ef4216b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 100
+  maxHealth: 75
 --- !u!114 &765842377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2519,6 +2558,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPoint: {fileID: 946777813}
+  placementManager: {fileID: 0}
+  endStopDistance: 1.2
+  wanderChance: 0.42
+  wanderRadius: 2
+  repathInterval: {x: 0.5, y: 1}
 --- !u!1001 &781641381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2887,6 +2931,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2908,9 +2954,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1017595888
 MeshFilter:
@@ -3462,9 +3510,13 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 3484825454dfc682abaae34680ae2795, type: 3}
   m_SortingOrder: 0
+  m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
 --- !u!4 &1265187060
 Transform:
   m_ObjectHideFlags: 0
@@ -4536,6 +4588,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4557,9 +4611,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1556371960
 MeshFilter:
@@ -5768,6 +5824,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5789,9 +5847,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2102103908
 MeshFilter:
@@ -5946,11 +6006,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3247546765202137727, guid: 6b3730f4aa743212d81b0f9fd0ea6472, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.011898041
+      value: 2.87
       objectReference: {fileID: 0}
     - target: {fileID: 3247546765202137727, guid: 6b3730f4aa743212d81b0f9fd0ea6472, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.02189827
+      value: -7.96
       objectReference: {fileID: 0}
     - target: {fileID: 3247546765202137727, guid: 6b3730f4aa743212d81b0f9fd0ea6472, type: 3}
       propertyPath: m_LocalRotation.w
