@@ -20,6 +20,14 @@ public class MazePlacementManager : MonoBehaviour
     public event Action OnPresetPlaced;
     public event Action OnRunStarted;
 
+    private void Awake()
+    {
+        RunStarted = false;
+        _placementLocked = false;
+        _currentMazeInstance = null;
+        _selectedPreset = null;
+    }
+
     public bool TryPlacePreset(MazePreset preset)
     {
         if (RunStarted || _placementLocked || preset == null || preset.mazePrefab == null || placementAnchor == null)
