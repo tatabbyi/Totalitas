@@ -72,6 +72,7 @@ public class EnemyPathfinder : MonoBehaviour
             nextRepathTime = Time.time + Random.Range(repathInterval.x, repathInterval.y);
             SetSmartDestination();
         }
+
         if (animator != null) animator.speed = agent.velocity.sqrMagnitude > 0.01f ? 1f : 0f;
     }
 
@@ -97,7 +98,7 @@ public class EnemyPathfinder : MonoBehaviour
     {
         if (targetPoint == null || agent == null) return;
         if (Random.value >= wanderChance) { agent.SetDestination(targetPoint.position); return; }
-
+        
         float currentToGoal = Vector3.Distance(transform.position, targetPoint.position);
         Vector3 forwardSample = Vector3.Lerp(transform.position, targetPoint.position, 0.4f);
 
@@ -111,7 +112,7 @@ public class EnemyPathfinder : MonoBehaviour
             NavMeshPath path = new NavMeshPath();
             if (agent.CalculatePath(hit.position, path) && path.status != NavMeshPathStatus.PathInvalid) { agent.SetDestination(hit.position); return; }
         }
-
+        
         agent.SetDestination(targetPoint.position);
     }
 }

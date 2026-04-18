@@ -57,7 +57,7 @@ public class MazePresetUIController : MonoBehaviour
                 if (_buttons[idx] == null || _labels[idx] == null || _images[idx] == null)
                     continue;
 
-                _labels[idx].text = preset.displayName;
+                _labels[idx].text = $"Maze {idx + 1}";
 
                 if (preset.previewImage != null)
                     _images[idx].style.backgroundImage = new StyleBackground(preset.previewImage);

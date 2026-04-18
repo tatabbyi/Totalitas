@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="MazePresetPanel.uss" />
+    <ui:VisualElement name="PresetSidebar" class="preset-sidebar">
+        <ui:Label name="BuildStatusLabel" class="status-label" text="Select a maze preset, then press Start." />
+        <ui:Button name="PresetButton0" class="preset-button">
+            <ui:VisualElement name="PresetImage0" class="preset-image" />
+            <ui:Label name="PresetLabel0" class="preset-label" text="Preset 1" />
+        </ui:Button>
+        <ui:Button name="PresetButton1" class="preset-button">
+            <ui:VisualElement name="PresetImage1" class="preset-image" />
+            <ui:Label name="PresetLabel1" class="preset-label" text="Preset 2" />
+        </ui:Button>
+        <ui:Button name="PresetButton2" class="preset-button">
+            <ui:VisualElement name="PresetImage2" class="preset-image" />
+            <ui:Label name="PresetLabel2" class="preset-label" text="Preset 3" />
+        </ui:Button>
+        <ui:Button name="StartRunButton" class="start-button" text="Start Wave" />
+    </ui:VisualElement>
+</ui:UXML>
