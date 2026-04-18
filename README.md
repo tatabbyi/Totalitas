@@ -38,7 +38,7 @@ The project is in an early development stage.
 ## Team
 
 Developed by:  
-Cristian Bivol, Andrew Culligan, Rachel Keaveney, Darragh Krausen, Olivier Miskiewicz, Megan Fondja Ntoukam, Elizabeth Schmidt, Diana Sholomko  
+ Rachel Keaveney, Diana Sholomko, Elizabeth Schmidt, Megan Fondja Ntoukam, Andrew Culligan, Darragh Krausen, Olivier Miskiewicz, Cristian Bivol
 
 ---
 
