@@ -20,7 +20,7 @@ public class MazePlacementManager : MonoBehaviour
     public event Action OnPresetPlaced;
     public event Action OnRunStarted;
 
-    private void Awake()
+    private void Awake() // fresh state each time you hit play
     {
         RunStarted = false;
         _placementLocked = false;
@@ -50,7 +50,7 @@ public class MazePlacementManager : MonoBehaviour
         return true;
     }
 
-    public bool TryStartRun()
+    public bool TryStartRun() // after preset placed; enemies listen for RunStarted
     {
         if (RunStarted || !HasPlacedPreset)
             return false;

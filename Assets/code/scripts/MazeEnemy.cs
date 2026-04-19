@@ -81,7 +81,7 @@ public class MazeEnemy : MonoBehaviour
                 return;
             }
 
-            if (placementManager != null && !placementManager.RunStarted)
+            if (placementManager != null && !placementManager.RunStarted) // wait for start wave
             {
                 agent.isStopped = true;
                 return;
@@ -128,7 +128,7 @@ public class MazeEnemy : MonoBehaviour
         agent.SetDestination(targetPoint.position);
     }
 
-    private bool TryGetDetourPoint(out Vector3 detourPoint)
+    private bool TryGetDetourPoint(out Vector3 detourPoint) // random nav point, not too far from goal
     {
         detourPoint = Vector3.zero;
 

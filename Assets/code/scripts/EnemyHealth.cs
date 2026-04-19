@@ -19,7 +19,9 @@ public class EnemyHealth : MonoBehaviour
         if (_currentHealth <= 0)
         {
             Debug.Log($"{name} died.");
-            GameOverFlow.Trigger($"{name} died");
+            bool lastEnemyAlive = FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None).Length <= 1; // still alive before destroy
+            if (lastEnemyAlive)
+                GameOverFlow.TriggerWin("All enemies died before reaching village");
 
             var pathfinder = GetComponent<EnemyPathfinder>();
             if (pathfinder != null) pathfinder.FreezeNow();

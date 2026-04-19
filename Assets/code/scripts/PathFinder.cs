@@ -9,15 +9,21 @@ public class EnemyPathfinder : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float wanderChance = 0.22f;
     [SerializeField] private float wanderRadius = 2f;
     [SerializeField] private Vector2 repathInterval = new Vector2(0.5f, 1f);
+    [SerializeField] private float stuckRecoveryTime = 1.4f; // nudge toward village if barely moving
+    [SerializeField] private float minMoveSpeed = 0.07f;
     private NavMeshAgent agent;
     private Animator animator;
     private bool reachedEnd;
+    private bool headingToWanderPoint;
     private float nextRepathTime;
+    private float stuckTimer;
 
     void OnEnable()
     {
         reachedEnd = false;
+        headingToWanderPoint = false;
         nextRepathTime = 0f;
+        stuckTimer = 0f;
     }
 
     void Start()
@@ -58,12 +64,26 @@ public class EnemyPathfinder : MonoBehaviour
             return;
         }
 
+        // If the enemy reached its temporary random point, send it back toward the village.
+        float randomPointStopDistance = Mathf.Max(agent.stoppingDistance, 0.2f);
+        bool reachedRandomPoint = headingToWanderPoint &&
+                                  agent.hasPath &&
+                                  !agent.pathPending &&
+                                  agent.remainingDistance <= randomPointStopDistance;
+
+        if (reachedRandomPoint)
+        {
+            headingToWanderPoint = false;
+            agent.SetDestination(targetPoint.position);
+        }
+
         float stopDistance = Mathf.Max(agent.stoppingDistance, endStopDistance);
-        if (agent.hasPath && !agent.pathPending && agent.remainingDistance <= stopDistance)
+        float distanceToVillage = Vector3.Distance(transform.position, targetPoint.position); // world distance, not path length
+        if (distanceToVillage <= stopDistance)
         {
             reachedEnd = true;
             PauseMovement(true);
-            GameOverFlow.Trigger($"{name} reached village");
+            GameOverFlow.TriggerLose($"{name} reached village");
             return;
         }
 
@@ -74,7 +94,36 @@ public class EnemyPathfinder : MonoBehaviour
             SetSmartDestination();
         }
 
-        if (animator != null) animator.speed = agent.velocity.sqrMagnitude > 0.01f ? 1f : 0f;
+        // stuck if path says far away but we barely move (corners etc)
+        bool shouldCheckStuck = !agent.pathPending &&
+                                agent.hasPath &&
+                                agent.remainingDistance > stopDistance + 0.3f;
+        bool isHardlyMoving = agent.velocity.sqrMagnitude < minMoveSpeed * minMoveSpeed;
+
+        if (shouldCheckStuck && isHardlyMoving)
+        {
+            stuckTimer += Time.deltaTime;
+            if (stuckTimer >= stuckRecoveryTime)
+            {
+                stuckTimer = 0f;
+                headingToWanderPoint = false;
+                agent.ResetPath();
+                agent.SetDestination(targetPoint.position);
+                nextRepathTime = Time.time + 0.2f;
+            }
+        }
+        else
+        {
+            stuckTimer = 0f;
+        }
+
+        if (animator != null)
+        {
+            if (agent.velocity.sqrMagnitude > 0.01f)
+                animator.speed = 1f;
+            else
+                animator.speed = 0f;
+        }
     }
 
     public void FreezeNow()
@@ -92,13 +141,26 @@ public class EnemyPathfinder : MonoBehaviour
             if (resetPath) agent.ResetPath();
         }
 
+        if (resetPath)
+        {
+            headingToWanderPoint = false;
+            stuckTimer = 0f;
+        }
+
         if (animator != null) animator.speed = 0f;
     }
 
     private void SetSmartDestination()
     {
-        if (targetPoint == null || agent == null) return;
-        if (Random.value >= wanderChance) { agent.SetDestination(targetPoint.position); return; }
+        if (targetPoint == null || agent == null)
+            return;
+
+        if (Random.value >= wanderChance) // usually aim at village
+        {
+            headingToWanderPoint = false;
+            agent.SetDestination(targetPoint.position);
+            return;
+        }
         
         float currentToGoal = Vector3.Distance(transform.position, targetPoint.position);
         Vector3 forwardSample = Vector3.Lerp(transform.position, targetPoint.position, 0.4f);
@@ -107,13 +169,24 @@ public class EnemyPathfinder : MonoBehaviour
         {
             Vector2 offset = Random.insideUnitCircle * wanderRadius;
             Vector3 candidate = forwardSample + new Vector3(offset.x, 0f, offset.y);
-            if (!NavMesh.SamplePosition(candidate, out NavMeshHit hit, wanderRadius, NavMesh.AllAreas)) continue;
-            if (Vector3.Distance(hit.position, targetPoint.position) >= currentToGoal) continue;
+            if (!NavMesh.SamplePosition(candidate, out NavMeshHit hit, wanderRadius, NavMesh.AllAreas))
+                continue;
+            if (Vector3.Distance(hit.position, targetPoint.position) >= currentToGoal)
+                continue;
 
             NavMeshPath path = new NavMeshPath();
-            if (agent.CalculatePath(hit.position, path) && path.status != NavMeshPathStatus.PathInvalid) { agent.SetDestination(hit.position); return; }
+            bool hasCompletePath = agent.CalculatePath(hit.position, path) &&
+                                   path.status == NavMeshPathStatus.PathComplete;
+
+            if (hasCompletePath)
+            {
+                headingToWanderPoint = true;
+                agent.SetDestination(hit.position);
+                return;
+            }
         }
         
+        headingToWanderPoint = false;
         agent.SetDestination(targetPoint.position);
     }
 }
