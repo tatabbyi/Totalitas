@@ -63,6 +63,7 @@ public class EnemyPathfinder : MonoBehaviour
         {
             reachedEnd = true;
             PauseMovement(true);
+            GameOverFlow.Trigger($"{name} reached village");
             return;
         }
 

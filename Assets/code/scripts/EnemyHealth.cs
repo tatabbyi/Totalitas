@@ -19,6 +19,8 @@ public class EnemyHealth : MonoBehaviour
         if (_currentHealth <= 0)
         {
             Debug.Log($"{name} died.");
+            GameOverFlow.Trigger($"{name} died");
+
             var pathfinder = GetComponent<EnemyPathfinder>();
             if (pathfinder != null) pathfinder.FreezeNow();
 
