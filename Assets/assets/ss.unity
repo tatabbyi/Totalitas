@@ -163,14 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01380a18752917409c0ab43f479a926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue1
-  textComponent: {fileID: 0}
-  lines:
-  - 'Greetings warrior, '
-  - Totalitas is a game where you build and protect the maze from the enemies in
-    different eras of life.
-  textSpeed: 0
-  autoStart: 1
-  advanceKeys: 200000000d0000000f010000
 --- !u!1 &347222519
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,13 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01380a18752917409c0ab43f479a926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue1
-  textComponent: {fileID: 730952784}
-  lines:
-  - 'Greetings warrior '
-  - 
-  textSpeed: 0.0001
-  autoStart: 1
-  advanceKeys: 200000000d0000000f010000
 --- !u!114 &614162375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +356,7 @@ GameObject:
   - component: {fileID: 730952783}
   - component: {fileID: 730952785}
   - component: {fileID: 730952784}
+  - component: {fileID: 730952786}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
@@ -497,6 +483,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730952782}
   m_CullTransparentMesh: 1
+--- !u!114 &730952786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730952782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb91307a00659f44beca6b9269499d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue1
+  dialogueText: {fileID: 0}
+  lines:
+  - 'Hey! Im Yemena  '
+  - I'm going to show you the ropes!
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1 &896204356
 GameObject:
   m_ObjectHideFlags: 0
