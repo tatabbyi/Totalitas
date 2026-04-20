@@ -1,11 +1,11 @@
 using UnityEngine;
-using TMPro;   // Remove this if you use legacy Text
+using TMPro;   
 using UnityEngine.InputSystem;
 
 public class DialogueController : MonoBehaviour
 {
-    public TMP_Text dialogueText;   // Assign in Inspector
-    public string[] lines;          // Fill in Inspector
+    public TMP_Text dialogueText;   
+    public string[] lines;         
 
     private int index = 0;
 

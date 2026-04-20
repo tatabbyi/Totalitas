@@ -4,31 +4,98 @@
 .header {
 }
 
+.container {
+    flex-grow: 1;
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.brightness-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    pointer-events: none;
+}
+
+.menu-stack {
+    width: 340px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 72px;
+    margin-top: 250px;
+}
+
+.slider-label {
+    font-size: 20px;
+    color: rgb(245, 248, 255);
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    margin-bottom: -4px;
+}
+
+.slider {
+    width: 260px;
+    height: 28px;
+    margin-bottom: 4px;
+}
+
+.hidden {
+    display: none;
+}
+
 .button {
-    font-size: 30px;
-    -unity-text-align: upper-center;
+    font-size: 32px;
+    -unity-text-align: middle-center;
+    -unity-font-definition: url("project://database/Assets/TutorialInfo/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans");
     padding-right: 0;
     padding-left: 0;
-    width: 220px;
-    height: 60px;
-    align-self: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background-color: rgb(253, 239, 213);
-    -unity-background-image-tint-color: rgb(255, 255, 255);
-    -unity-font-definition: url("project://database/Library/unity%20default%20resources?fileID=10102&guid=0000000000000000e000000000000000&type=0#LegacyRuntime");
+    width: 300px;
+    height: 82px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    border-bottom-left-radius: 14px;
+    border-top-width: 0;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-color: rgba(172, 190, 255, 0.38);
+    border-bottom-color: rgba(10, 16, 39, 0.88);
+    border-left-color: rgba(172, 190, 255, 0.38);
+    background-color: rgba(33, 46, 91, 0.72);
     -unity-font-style: bold;
-    color: rgb(38, 50, 113);
-    margin-top: 520px;
-    margin-right: 520px;
-    margin-bottom: 520px;
-    margin-left: 520px;
-    transition-duration: 0.45s;
+    color: rgb(247, 250, 255);
+    transition-duration: 0.18s;
+}
+
+#settingsButton {
+    margin-top: 32px;
+}
+
+.secondary-button {
+    margin-top: 8px;
+    background-color: rgba(43, 58, 108, 0.92);
 }
 
 .button:hover {
-    scale: 1.1 1.1;
-    -unity-background-image-tint-color: rgb(132, 12, 12);
+    scale: 1.04 1.04;
+    background-color: rgba(56, 74, 136, 0.95);
+    border-right-color: rgba(196, 210, 255, 0.55);
+    border-bottom-color: rgba(13, 22, 52, 0.95);
+    border-left-color: rgba(196, 210, 255, 0.55);
+}
+
+.button:active {
+    scale: 0.99 0.99;
+    background-color: rgba(26, 37, 77, 0.95);
 }
