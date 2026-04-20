@@ -3,7 +3,7 @@ using UnityEngine;
 public class MainMenuMusic : MonoBehaviour
 {
     [SerializeField] private AudioClip menuClip;
-    [SerializeField, Range(0f, 1f)] private float volume = 0.75f;
+    [SerializeField, Range(0f, 1f)] private float volume = 0.6f;
 
     private void Start()
     {

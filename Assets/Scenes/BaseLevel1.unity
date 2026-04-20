@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2d954a3be56683340a21621cf59606d8, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -383,6 +383,8 @@ MonoBehaviour:
   wanderChance: 0.086
   wanderRadius: 2
   repathInterval: {x: 0.5, y: 1}
+  stuckRecoveryTime: 1.4
+  minMoveSpeed: 0.07
 --- !u!1001 &39500491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1599,7 +1601,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
@@ -1623,13 +1625,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342679491}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6937144, y: -0.06069213, z: -0.06069213, w: 0.7151177}
+  m_LocalRotation: {x: -0.10277662, y: -0.663051, z: 0.6676973, w: 0.3224603}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 100, y: 100, z: 100}
+  m_LocalEulerAnglesHint: {x: 55, y: -80, z: 81.252}
 --- !u!114 &342679494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1650,7 +1652,7 @@ MonoBehaviour:
   m_SoftShadowQuality: 0
   m_RenderingLayersMask:
     serializedVersion: 0
-    m_Bits: 1
+    m_Bits: 4294967295
   m_ShadowRenderingLayersMask:
     serializedVersion: 0
     m_Bits: 1
@@ -2567,6 +2569,8 @@ MonoBehaviour:
   wanderChance: 0.42
   wanderRadius: 2
   repathInterval: {x: 0.5, y: 1}
+  stuckRecoveryTime: 1.4
+  minMoveSpeed: 0.07
 --- !u!1001 &781641381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4639,7 +4643,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalScale: {x: 11, y: 1, z: 11}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

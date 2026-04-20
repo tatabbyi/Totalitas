@@ -7,7 +7,7 @@ using TMPro;
 public class buttonrestart : MonoBehaviour
 {
     [SerializeField] private string retrySceneName = "BaseLevel1";
-    [SerializeField] private string mainMenuSceneName = "SampleScene";
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
     [SerializeField] private string loseTitleText = "Game Over";
     [SerializeField] private string winTitleText = "You Win !";
     [SerializeField] private string loseButtonText = "Try Again";
