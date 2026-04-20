@@ -242,6 +242,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuFunction
   document: {fileID: 0}
+  tryGuideBeforeLevel1: 1
+  guideSceneName: Guide
+  baseLevelSceneName: BaseLevel1
   level2SceneName: Level2
 --- !u!114 &835207858
 MonoBehaviour:

@@ -5553,6 +5553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1982503612}
   - component: {fileID: 1982503611}
+  - component: {fileID: 1982503613}
   m_Layer: 0
   m_Name: MazeSystem
   m_TagString: Untagged
@@ -5578,6 +5579,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1cc967c1d088aaf18813b107a91440c5, type: 2}
   - {fileID: 11400000, guid: 1fdf7b32412be84d58752af2b9d70cbb, type: 2}
   navMeshSurface: {fileID: 1556371962}
+--- !u!114 &1982503613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982503610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c842a1f3e9d24b6b8a7f0d1c2e3b4a5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GuideLevelBootstrap
+  mazePresetUiRoot: {fileID: 1265187057}
+  guideSceneName: Guide
 --- !u!4 &1982503612
 Transform:
   m_ObjectHideFlags: 0

@@ -51,6 +51,11 @@ public static class GameOverFlow
         _playerWon = playerWon;
         _reason = reason;
         Debug.Log($"[GameOverFlow] Triggered: {reason}");
-        SceneManager.LoadScene(EndSceneName);
+
+        // Keep BaseLevel1 visible behind the end UI (dark overlay + buttons).
+        if (SceneManager.GetActiveScene().name == "BaseLevel1")
+            SceneManager.LoadScene(EndSceneName, LoadSceneMode.Additive);
+        else
+            SceneManager.LoadScene(EndSceneName, LoadSceneMode.Single);
     }
 }

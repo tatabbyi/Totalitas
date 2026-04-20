@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 public class MainMenuFunction : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
+    [Header("Level 1")]
+    [Tooltip("If true, loads BaseLevel1 with the maze preset UI hidden, then loads Guide on top; when the guide completes, Guide unloads and the maze UI appears. If Guide is missing from Build Settings or you turn this off, loads BaseLevel1 only.")]
+    [SerializeField] private bool tryGuideBeforeLevel1 = true;
+    [SerializeField] private string guideSceneName = "Guide";
+    [SerializeField] private string baseLevelSceneName = "BaseLevel1";
     [SerializeField] private string level2SceneName = "Level2";
 
     private Button _startButton;
@@ -122,7 +127,20 @@ public class MainMenuFunction : MonoBehaviour
 
     private void OnLevel1Click()
     {
-        LoadSceneIfAvailable("BaseLevel1");
+        if (tryGuideBeforeLevel1 && Application.CanStreamedLevelBeLoaded(guideSceneName))
+        {
+#if UNITY_EDITOR
+            Debug.Log($"[MainMenu] Loading '{baseLevelSceneName}' with guide overlay '{guideSceneName}', then showing maze UI when guide completes.");
+#endif
+            GuideFlow.GoToGuideThen(baseLevelSceneName, guideSceneName);
+            return;
+        }
+
+#if UNITY_EDITOR
+        if (tryGuideBeforeLevel1)
+            Debug.LogWarning($"[MainMenu] Guide not in build or bad name — loading '{baseLevelSceneName}' only. Add Assets/Scenes/Guide.unity to Build Settings.");
+#endif
+        LoadSceneIfAvailable(baseLevelSceneName);
     }
 
     private void OnLevel2Click()
